@@ -43,25 +43,25 @@ Encuéntrala con el cliente SQL y cópiala en el README.
 
  9 | MONEDA-1: ARC-7X3K | secreto        |      0 
 
- ** MONEDA 1: ARC-7X3K
+ **MONEDA 1: ARC-7X3K**
 
 ## Moneda 2: Aparece en la página cuando la conexión funciona. Cópiala en el README.
 
-** MONEDA 2: ARC-Q9M2
+**MONEDA 2: ARC-Q9M2**
 
 ## Moneda 3: te la doy yo en directo cuando compruebe curl -I y docker compose ps en tu equipo.
 
-** MONEDA 3: SE DARA EN CLASE
+**MONEDA 3: SE DARA EN CLASE**
 
 --- 
 
 # PREGUNTAS
 
-** ¿por qué no le pasamos al servicio web la contraseña de root de la base de datos (env_file: .env)?
+**¿por qué no le pasamos al servicio web la contraseña de root de la base de datos (env_file: .env)?**
 Porque se vasta con el usuario arcade
 
 
-** Copia en el README el resultado de SHOW GRANTS
+**Copia en el README el resultado de SHOW GRANTS**
 
 +--------------------------------------------------------------------------------------------------------+
 | Grants for jugador@%                                                                                   |
@@ -70,7 +70,7 @@ Porque se vasta con el usuario arcade
 | GRANT ALL PRIVILEGES ON `arcade`.* TO `jugador`@`%`                                                    |
 +--------------------------------------------------------------------------------------------------------+
 
-** ¿sobre qué base de datos tiene permisos el usuario jugador? ¿Por qué no usamos root desde la aplicación?
+**¿sobre qué base de datos tiene permisos el usuario jugador? ¿Por qué no usamos root desde la aplicación?**
 
 //////////RESPONDER&&&&&&&&&&&&&&&&&&&
 
