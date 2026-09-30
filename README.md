@@ -19,7 +19,11 @@ permisos el usuario jugador? ¿Por qué no usamos root desde la aplicación?
 
 
 
-graph LR N[Navegador] -->|8080| W[Apache + PHP] W -->|red Docker| B[(MariaDB)]
+```mermaid
+graph LR
+    N[Navegador] -->|8080| W[Apache + PHP]
+    W -->|red Docker| B[(MariaDB)]
+```
 
 MONEDAS
 
