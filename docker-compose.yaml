@@ -1,0 +1,43 @@
+services:
+
+  apache:
+    container_name: apache
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html:z
+    environment:
+      DB_HOST: mariaDB
+      DB_NAME: ${MARIADB_DATABASE}
+      DB_USER: ${MARIADB_USER}
+      DB_PASS: ${MARIADB_PASSWORD}
+    depends_on:
+      mariaDB:
+        condition: service_healthy
+    networks:
+      recreativo:
+
+
+  mariaDB:
+    container_name: mariaDB
+    image: mariadb:11
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      retries: 10
+    networks:
+      recreativo:
+volumes:
+  db_data:
+
+
+networks:
+  recreativo: {}
+
