@@ -1,7 +1,9 @@
 # INTRODUCCION
 
 **AUTOR:**Ivan Garrigues Segui
+
 **PROYECTO:**Practica final RA1 — Salon recreativo
+
 **OBJETIVO:**El objetivo de la práctica es desplegar una aplicación web de un salón recreativo utilizando contenedores con Apache + PHP + MariaDB
 
 ---
@@ -51,6 +53,35 @@ graph LR
     N[Navegador] -->|8080| W[Apache + PHP]
     W -->|red Docker| B[(MariaDB)]
 ```
+
+### Flujo de funcionamiento
+
+1. El usuario accede desde el navegador a `http://localhost:8080`.
+2. La petición llega al contenedor de Apache.
+3. Apache ejecuta el código PHP.
+4. PHP se conecta a MariaDB utilizando el usuario `jugador`.
+5. MariaDB devuelve los datos del ranking.
+6. PHP genera la página HTML.
+7. El navegador recibe y muestra la página.
+
+# ESTRUCTURA DEL PROYECTO
+
+La estructura principal del proyecto es:
+
+```text
+salon-recreativo/
+├── docker-compose.yml
+├── .env
+├── .env.example
+├── .gitignore
+├── Dockerfile
+├── db/
+│   └── init.sql
+├── src/
+│   └── index.php
+└── README.md
+```
+
 
 ---
 
@@ -187,8 +218,14 @@ RUN sed -i 's/^ServerTokens .*/ServerTokens Prod/' /etc/apache2/conf-available/s
 
 ### Resultado obtenido
 
-```text
+El resultado optenido deberia ser algo similar a:
 
+```text
+[vanxu@archie ~]$ curl -I http://localhost:8080
+HTTP/1.1 200 OK
+Date: Thu, 01 Oct 2026 00:44:02 GMT
+Server: Apache
+Content-Type: text/html; charset=UTF-8
 ```
 
 # PREGUNTAS
@@ -199,12 +236,14 @@ Porque se vasta con el usuario arcade.
 
 
 ## **Copia en el README el resultado de SHOW GRANTS**
+```text
 +--------------------------------------------------------------------------------------------------------+
 | Grants for jugador@%                                                                                   |
 +--------------------------------------------------------------------------------------------------------+
 | GRANT USAGE ON *.* TO `jugador`@`%` IDENTIFIED BY PASSWORD '*25191BA4E6DA0D23829FB51E56726069C4BED650' |
 | GRANT ALL PRIVILEGES ON `arcade`.* TO `jugador`@`%`                                                    |
 +--------------------------------------------------------------------------------------------------------+
+```
 
 ## **¿sobre qué base de datos tiene permisos el usuario jugador? ¿Por qué no usamos root desde la aplicación?**
 
